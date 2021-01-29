@@ -1,7 +1,10 @@
+package controller;
+
 import java.util.Calendar;
+import java.util.Date;
 
 public class Registro {
-    private String usuario;
+    private Usuario usuario;
     private int _010;
     private int _020;
     private int _050;
@@ -11,10 +14,10 @@ public class Registro {
     private int _10;
     private int _20;
     private int _50;
-    private double total;
+    private float total;
     private Calendar fecha;
 
-    public Registro(String usuario, int _010, int _020, int _050, int _1, int _2, int _5, int _10, int _20, int _50) {
+    public Registro(Usuario usuario, int _010, int _020, int _050, int _1, int _2, int _5, int _10, int _20, int _50) {
         this.usuario = usuario;
         this._010 = _010;
         this._020 = _020;
@@ -25,7 +28,8 @@ public class Registro {
         this._10 = _10;
         this._20 = _20;
         this._50 = _50;
-        this.total = _1+_2*2+_5*5+_10*10+_20*20+_50*50+_010*0.10+_020*0.20+_050*0.5;
+        this.total = 0.00f;
+        this.total = (float) (_1+_2*2+_5*5+_10*10+_20*20+_50*50+_010*0.10+_020*0.20+_050*0.5);
         this.fecha = Calendar.getInstance();
 
     }
@@ -38,7 +42,7 @@ public class Registro {
     }
 
     public int getMonth(){
-        return fecha.get(Calendar.MONTH);
+        return fecha.get(Calendar.MONTH)+1;
     }
 
     public int getDay(){
@@ -49,7 +53,7 @@ public class Registro {
         return fecha.get(Calendar.YEAR);
     }
 
-    public String getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
@@ -89,7 +93,11 @@ public class Registro {
         return _50;
     }
 
-    public double getTotal() {
+    public Date getDate(){
+        return this.fecha.getTime();
+    }
+
+    public float getTotal() {
         return total;
     }
 }
